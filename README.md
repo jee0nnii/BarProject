@@ -18,8 +18,8 @@
         * main.jsp
         * login.jsp
 
-* web.xml / pom.xml 
-* 
+* web.xml / pom.xml
 
+http://192.168.201.17:8080/jb/main
         
     
