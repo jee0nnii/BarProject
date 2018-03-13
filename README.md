@@ -19,8 +19,35 @@
         * login.jsp
 
 * web.xml / pom.xml 설정
+#### 1.2 vo
+##### 1.2.1 MemberVO
+```
+public class MemberVO{
+ private int id;
+ private String name;
+ private String account;
+ private String password;
+ private String nickname;
+ private String email;
+ private Date birthday;
+}
 
-#### 1.2 WEB 띄우기
+```
+##### 1.2.2 DrinkVO
+```
+public class DrinkVO{
+ private int drinkId;
+ private String drinkName;
+ private float volume;
+ private String country;
+ private String type;
+ private String drinkImg;
+ private int likePoint;
+ private int hatePoint;
+}
+```
+
+#### 1.3 WEB 띄우기
 http://192.168.201.17:8080/jb/main
         
     
