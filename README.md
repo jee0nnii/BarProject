@@ -7,8 +7,14 @@
     * dao
     * service
     * vo
+     * DrinkVO
     * web
       * MainController
+  * com.bar.member
+    * vo
+     * MemberVO
+    * web
+      * MemberController
   * src.main.webapp.WEB-INF
     * spring
       * ***aplicationContext.xml*** 계속 변경해야 됨!!
