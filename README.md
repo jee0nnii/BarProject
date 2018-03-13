@@ -11,7 +11,7 @@
       * MainController
   * src.main.webapp.WEB-INF
     * spring
-      * applicationContext.xml 계속 변경해야 됨!!
+      * ***aplicationContext.xml*** 계속 변경해야 됨!!
     * static
     * view
       * bar
