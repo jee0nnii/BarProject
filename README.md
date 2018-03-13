@@ -1,7 +1,7 @@
-#BarProject
+# BarProject
 ----
-### 1. 현재 진행 상황 
-#### 1.1 프로젝트 생성 및 설정
+## 1. 현재 진행 상황 
+### 1.1 프로젝트 생성 및 설정
 * Spring Web project 생성
   * com.bar.main
     * dao
@@ -19,8 +19,8 @@
         * login.jsp
 
 * web.xml / pom.xml 설정
-#### 1.2 vo
-##### 1.2.1 MemberVO
+### 1.2 vo
+#### 1.2.1 MemberVO
 ```
 public class MemberVO{
  private int id;
@@ -33,7 +33,7 @@ public class MemberVO{
 }
 
 ```
-##### 1.2.2 DrinkVO
+#### 1.2.2 DrinkVO
 ```
 public class DrinkVO{
  private int drinkId;
@@ -41,13 +41,14 @@ public class DrinkVO{
  private float volume;
  private String country;
  private String type;
+ private String desc;
  private String drinkImg;
  private int likePoint;
  private int hatePoint;
 }
 ```
 
-#### 1.3 WEB 띄우기
+### 1.3 WEB 띄우기
 http://192.168.201.17:8080/jb/main
         
     
