@@ -7,12 +7,12 @@
     * dao
     * service
     * vo
-     * DrinkVO
+      * DrinkVO
     * web
       * MainController
   * com.bar.member
     * vo
-     * MemberVO
+      * MemberVO
     * web
       * MemberController
   * src.main.webapp.WEB-INF
@@ -53,6 +53,9 @@ public class DrinkVO{
  private int hatePoint;
 }
 ```
+
+* 내가 보유한 제품 리스트와 원하는 제품에 대한 리스트를 표현할 때 VO를 다르게 가져야 될까??
+* 업데이트 될 경우를 고려해야되니까
 
 ### 1.3 WEB 띄우기
 http://192.168.201.17:8080/jb/main
