@@ -11,7 +11,6 @@
 ### 1.3 WEB 띄우기
 http://192.168.201.17:8080/jb/main
         
-### 1.4 TODO TIL 0319
-* 로그인(ADMIN/1234) 완성시키기
-* Drink List 보여주기
-* Wish List 글쓰기
+### 1.4 TODO
+* LOGIN & JOIN :: DB 연결해서 완성
+ * ~ Context.xml :: 파일 분리
