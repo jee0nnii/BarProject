@@ -8,7 +8,10 @@
 ### 1.2 DB TABLE
 ![baruser](./baruser.png)
 
-### 1.3 WEB 띄우기
+### 1.3 VIEW
+![join](./join.PNG)
+![join2](./join2.PNG)
+![sqluser](./sqluser.PNG)
 http://192.168.201.17:8080/jb/main
         
 ### 1.4 TODO
