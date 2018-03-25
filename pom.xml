@@ -41,7 +41,6 @@
   		<artifactId>hibernate-validator</artifactId>
   		<version>6.0.7.Final</version>
   	</dependency>
-<<<<<<< HEAD
   	<!-- 디비연결 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -70,8 +69,6 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
-  	
-=======
->>>>>>> branch 'master' of https://github.com/jee0nnii/JeonyBar.git
-  </dependencies>
+
+</dependencies>
 </project>
