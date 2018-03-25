@@ -3,6 +3,11 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="UserDAO">
+	<select id="selectDuplicateEmail" parameterType="string" resultType ="_int">
+		SELECT	COUNT(ID)
+		FROM	BAR_USER
+		WHERE	EMAIL = #{email}
+	</select>
 	<insert id="insertUser" parameterType="UserVO">
 		INSERT INTO BAR_USER (
 		ID
@@ -12,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, PASSWORD
 		, REGIST_DATE
 		, BIRTHDAY
+		, SALT
 
 		)
 		VALUES (
@@ -22,6 +28,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, #{password}
 		, SYSDATE
 		, #{birthday}
+		, #{salt}
 		)
 	</insert>
+	<select id="selectUser" parameterType="UserVO" resultType="UserVO">
+		SELECT	ID
+				, EMAIL
+				, NICKNAME
+				, PASSWORD
+				, SALT
+		FROM	BAR_USER
+		WHERE	EMAIL = #{email}
+		AND		PASSWORD = #{password}
+	</select>
+	<select id="selectSalt" parameterType="string" resultType="string">
+		SELECT	NVL(SALT,'')
+		FROM	BAR_USER
+		WHERE	EMAIL = #{email}
+	</select>
+	
 </mapper>

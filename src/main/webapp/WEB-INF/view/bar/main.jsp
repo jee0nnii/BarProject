@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Theme Made By www.w3schools.com - No Copyright -->
 <title>main</title>
 <!-- css -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/static/css/main.css"/>">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/static/css/main.css"/>">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -27,13 +28,27 @@
 			location.href = "<c:url value = "/join"/>"
 		});
 	});
-</script>	
+</script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="50">
 
+
+
+
 	<!-- Container (The about Section) -->
 	<div id="list" class="container text-center">
+
+		<!-- 로그인 상태 확인 -->
+		<div>
+			<c:if test="${empty sessionScope.__USER__}">
+				<a href="<c:url value="/login"/>">login</a>
+			</c:if>
+			<c:if test="${not empty sessionScope.__USER__ }">
+				<a href="<c:url value="/logout"/>">logout</a>
+			</c:if>
+		</div>
+
 		<h3>JEONY BAR</h3>
 		<p>
 			<em>We love drink!</em>
@@ -42,14 +57,14 @@
 		<br>
 		<div class="row">
 			<div class="col-sm-4">
-				<input type = "button" id="wehave" class="btn" value="WE HAVE"/>			
+				<input type="button" id="wehave" class="btn" value="WE HAVE" />
 			</div>
 			<div class="col-sm-4">
-				<input type = "button" id="wishlist" class="btn" value="WISH LIST"/>						
+				<input type="button" id="wishlist" class="btn" value="WISH LIST" />
 			</div>
 			<div class="col-sm-4">
-				<input type = "button" id="canbuy" class="btn" value="CAN BUY"/>		
-			</div>			
+				<input type="button" id="canbuy" class="btn" value="CAN BUY" />
+			</div>
 		</div>
 	</div>
 
@@ -57,22 +72,18 @@
 	<div id="login" class="bg-1">
 		<div class="container">
 			<h3 class="text-center">LOGIN & JOIN</h3>
-			<p class="text-center">
-				커몬커몬
-			</p>
+			<p class="text-center">커몬커몬</p>
 
- 			<div class="row text-center">
-				<div class="col-sm-2">
-					
-				</div>
+			<div class="row text-center">
+				<div class="col-sm-2"></div>
 				<div class="col-sm-4">
 					<div class="thumbnail">
-						<button class="btn" id ="goLogin">LOGIN</button>
+						<button class="btn" id="goLogin">LOGIN</button>
 					</div>
 				</div>
 				<div class="col-sm-4">
 					<div class="thumbnail">
-						<button class="btn" id ="goJoin">JOIN</button>
+						<button class="btn" id="goJoin">JOIN</button>
 						<!-- <button class="btn" data-toggle="modal" data-target="#myModal">JOIN US</button> -->
 					</div>
 				</div>

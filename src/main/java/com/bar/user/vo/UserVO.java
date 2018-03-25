@@ -15,6 +15,17 @@ public class UserVO {
 	private String registDate; //가입일자
 	@NotEmpty(message = "생년월일 :: * 필수입력값!!")
 	private String birthday; //생년월일
+	
+	//0325 암호화
+	private String salt;
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+	//0325 암호화
+	
 	public int getId() {
 		return id;
 	}

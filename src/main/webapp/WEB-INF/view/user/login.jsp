@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,12 +26,11 @@ input {
 </style>
 <script type="text/javascript">
 	$().ready(function() {
-		$("#loginBtn").click(function() {	
-			location.href = "<c:url value = "/main"/>"
-			/* $("#loginForm").attr({
+		$("#loginBtn").click(function() {
+			$("#loginForm").attr({
 				"action" : "<c:url value = "/login"/>",
 				"method" : "post"
-			}).submit(); */
+			}).submit();
 		});
 		$("#joinBtn").click(function() {	
 			location.href = "<c:url value = "/join"/>"
@@ -43,20 +43,22 @@ input {
 		<div class="col-md-4 col-md-offset-4" id="loginSection">
 			<h3>&nbsplogin form</h3>
 			<hr />
-			<form id="loginForm">
+			<form:form modelAttribute="loginForm">
 				<div>
-					<input type="text" class="form-control" id="account" name="account"
-						placeholder="Enter account">
+					<input type="text" class="form-control" id="email" name="email"
+						placeholder="Enter Email">
 				</div>
+				<form:errors path="email"/>
 				<div>
 					<input type="password" class="form-control" id="password"
 						name="password" placeholder="Enter password">
 				</div>
+				<form:errors path="password"/>
 				<div style="float:right">
 					<span id ="joinBtn">JOIN US &nbsp&nbsp</span>
 					<input type="button" id="loginBtn" class="btn" value="LOGIN" />
 				</div>
-			</form>
+			</form:form>
 		</div>
 	</div>
 
