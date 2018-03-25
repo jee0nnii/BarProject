@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+	<mvc:annotation-driven />
+	<mvc:resources location="/WEB-INF/static/" mapping="/static/**" />
+	
+	<!-- 스프링 유효성검사   -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<bean id="mainController" class="com.bar.main.web.MainController"/>
+	
+	<!--회원가입 컨트롤러!!! -->
+	<bean id="userController" class="com.bar.user.web.UserController">
+	<!-- 프로퍼티 추가!! -->
+		<property name="userService" ref="userService"/>
+	</bean>
+	
+	<!-- 디비 연걸 -->
+	<bean id="userDao" class="com.bar.user.dao.UserDaoImplForOracle">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
+	</bean>
+	<bean id="userService" class="com.bar.user.service.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+		<!--이건???..... 
+		<property name="userDao" ref="userDaoOracle"></property> -->
+		
+	</bean>
+	
+</beans>

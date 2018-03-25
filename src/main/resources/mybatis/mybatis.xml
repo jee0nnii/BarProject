@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 패키지 통합관리 -->
+	<typeAliases>
+		<typeAlias type="com.bar.user.vo.UserVO" alias="UserVO"/> 
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/bar/user/dao/sql/userDao.xml"/>
+	</mappers>
+</configuration>
