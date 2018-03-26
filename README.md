@@ -388,3 +388,5 @@ $("#email").keyup(function(){
 ## WEB
 http://192.168.201.17:8080/jb/main
 
+## DB확인
+https://goo.gl/FHTFGo
