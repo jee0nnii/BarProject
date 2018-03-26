@@ -24,8 +24,14 @@
 		$("#goLogin").click(function() {
 			location.href = "<c:url value = "/login"/>"
 		});
+		$("#goLogout").click(function() {
+			location.href = "<c:url value = "/logout"/>"
+		});
 		$("#goJoin").click(function() {
 			location.href = "<c:url value = "/join"/>"
+		});
+		$("#goMypage").click(function() {
+			location.href = "<c:url value = "/mypage"/>"
 		});
 	});
 </script>
@@ -71,19 +77,35 @@
 	<!-- Container (list Section) -->
 	<div id="login" class="bg-1">
 		<div class="container">
-			<h3 class="text-center">LOGIN & JOIN</h3>
+			<c:if test="${empty sessionScope.__USER__ }">
+				<h3 class="text-center">LOGIN & JOIN</h3>
+			</c:if>
+			<c:if test="${not empty sessionScope.__USER__ }">
+				<h3 class="text-center">LOGOUT & MYPAGE</h3>
+			</c:if>
+
 			<p class="text-center">커몬커몬</p>
 
 			<div class="row text-center">
 				<div class="col-sm-2"></div>
 				<div class="col-sm-4">
 					<div class="thumbnail">
-						<button class="btn" id="goLogin">LOGIN</button>
+						<c:if test="${empty sessionScope.__USER__ }">
+							<button class="btn" id="goLogin">LOGIN</button>
+						</c:if>
+						<c:if test="${not empty sessionScope.__USER__ }">
+							<button class="btn" id="goLogout">LOGOUT</button>
+						</c:if>		
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<div class="thumbnail">
-						<button class="btn" id="goJoin">JOIN</button>
+					<div class="thumbnail">	
+						<c:if test="${empty sessionScope.__USER__ }">
+							<button class="btn" id="goLogin">JOIN</button>
+						</c:if>
+						<c:if test="${not empty sessionScope.__USER__ }">
+							<button class="btn" id="goMypage">MYPAGE</button>
+						</c:if>	
 						<!-- <button class="btn" data-toggle="modal" data-target="#myModal">JOIN US</button> -->
 					</div>
 				</div>

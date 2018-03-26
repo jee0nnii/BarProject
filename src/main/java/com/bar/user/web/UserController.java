@@ -32,6 +32,11 @@ public class UserController {
 	public String viewMainPage() {
 		return "bar/main";
 	}
+	
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public String viewMyPage() {
+		return "user/mypage";
+	}
 
 	// 회원가입 ++ 0325 중복처리
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
