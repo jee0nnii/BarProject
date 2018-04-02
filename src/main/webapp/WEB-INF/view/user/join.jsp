@@ -43,6 +43,65 @@ input {
 				
 			}
 		});
+		//0328
+		$("#endDateYear, #endDateMonth").change(
+				function() {
+					var data = $(this);
+					if (data.attr("id") == "endDateYear") {
+						var year = data.val();
+						var month = $("#endDateMonth").val();
+					} else {
+						var year = $("#endDateYear").val();
+						var month = data.val();
+					}
+					$.post("<c:url value="/api/date/max/"/>" + year
+							+ "/" + month, {}, function(response) {
+						$("#endDateDate").find("option").remove();
+						setDate("#endDateDate", parseInt(response));
+					});
+				});
+
+				//1. 검색 날짜 셋팅 : 
+				setYear("#endDateYear", parseInt("${search.endDateYear-19}"),
+						parseInt("${search.endDateYear}"));
+
+				setMonth("#endDateMonth");
+
+				setDate("#endDateDate", parseInt("${endDateMaximumDate}"));
+
+				// 날짜 셋팅
+				$("#endDateYear").val("${search.endDateYear}");
+				$("#endDateMonth").val("${search.endDateMonth}");
+				$("#endDateDate").val("${search.endDateDate}");
+
+				function setYear(elementId, startYear, endYear) {
+					for (var i = startYear; i <= endYear; i++) {
+						$(elementId).append($("<option>", {
+							value : i,
+							text : i
+						}));
+					}
+				}
+				function setMonth(elementId) {
+					for (var i = 1; i < 13; i++) {
+						var value = (i < 10) ? "0" + i : i;
+						$(elementId).append($("<option>", {
+							value : value,
+							text : value
+						}));
+					}
+				}
+				function setDate(elementId, maximumdate) {
+					for (var i = 1; i <= maximumdate; i++) {
+						var value = (i < 10) ? "0" + i : i;
+						$(elementId).append($("<option>", {
+							value : value,
+							text : value
+						}));
+					}
+				}
+		//0328
+		
 		
 		//폼에 들어온 값 처리 이벤트 시작
 		$("#joinBtn").click(function() {
@@ -82,8 +141,10 @@ input {
 						name="nickname" placeholder="닉네임입력">
 				</div>
 				<div>
-					<input type="date" class="form-control" id="birthday"
-						name="birthday" placeholder="생년월일입력">
+					생년월일
+					<select id ="endDateYear" name = "endDateYear"></select>
+					-<select id ="endDateMonth" name = "endDateMonth"></select>
+					-<select id ="endDateDate" name = "endDateDate"></select>
 				</div>
 				<div style="float:right">
 					<input type="button" id="joinBtn" class="btn" value="JOIN US" />
