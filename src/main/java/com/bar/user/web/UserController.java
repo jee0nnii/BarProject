@@ -28,6 +28,18 @@ public class UserController {
 		this.userService = userService;
 	}
 
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String viewIndexPage() {
+		return "bar/index";
+	}
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String viewTestPage() {
+		return "bar/test";
+	}
+	@RequestMapping(value = "/wehave", method = RequestMethod.GET)
+	public String viewWeHavePage() {
+		return "bar/wehave";
+	}
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String viewMainPage() {
 		return "bar/main";

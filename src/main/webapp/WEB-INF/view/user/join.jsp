@@ -23,6 +23,8 @@
 input {
 	margin-bottom: 5px;
 }
+
+
 </style>
 <script type="text/javascript">
 	$().ready(function() {
@@ -84,6 +86,30 @@ input {
 				<div>
 					<input type="date" class="form-control" id="birthday"
 						name="birthday" placeholder="생년월일입력">
+				</div>
+				<div class ="form-control">
+					<input type="checkbox" id="taste1" name ="taste1"/>
+					<label for ="taste1"><span>고소</span></label>
+					<input type="checkbox" id="taste2" name ="taste2"/>
+					<label for ="taste2"><span>깔끔</span></label>
+					<input type="checkbox" id="taste3" name ="taste3"/>
+					<label for ="taste3"><span>씁쓸</span></label>
+					<input type="checkbox" id="taste4" name ="taste4"/>
+					<label for ="taste4"><span>달콤</span></label>
+					<input type="checkbox" id="taste5" name ="taste5"/>
+					<label for ="taste5"><span>과일</span></label>
+					<input type="checkbox" id="taste6" name ="taste6"/>
+					<label for ="taste6"><span>새콤</span></label>	
+				</div>
+				<div  class ="form-control">
+					<input type="checkbox" id="type1" name ="type1"/>
+					<label for ="type1"><span>라거</span></label>
+					<input type="checkbox" id="type2" name ="type2"/>
+					<label for ="type2"><span>에일</span></label>
+					<input type="checkbox" id="type3" name ="type3"/>
+					<label for ="type3"><span>스타우트</span></label>
+					<input type="checkbox" id="type4" name ="type4"/>
+					<label for ="type4"><span>IPA</span></label>	
 				</div>
 				<div style="float:right">
 					<input type="button" id="joinBtn" class="btn" value="JOIN US" />

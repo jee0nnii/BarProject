@@ -6,6 +6,7 @@
 
 	<mvc:annotation-driven />
 	<mvc:resources location="/WEB-INF/static/" mapping="/static/**" />
+	<mvc:resources location="/WEB-INF/img/" mapping="/img/**" />
 	<!-- 0325 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
