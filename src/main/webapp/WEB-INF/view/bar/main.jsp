@@ -33,6 +33,9 @@
 		$("#goMypage").click(function() {
 			location.href = "<c:url value = "/mypage"/>"
 		});
+		$("#realmain").click(function() {
+			location.href ="<c:url value = "/test"/>"
+		});
 	});
 </script>
 <style>
@@ -250,7 +253,7 @@ textarea {
 				<input type="button" id="wishlist" class="btn" value="WISH LIST" />
 			</div>
 			<div class="col-sm-4">
-				<input type="button" id="canbuy" class="btn" value="CAN BUY" />
+				<input type="button" id="realmain" class="btn" value="REAL MAIN" />
 			</div>
 		</div>
 	</div>

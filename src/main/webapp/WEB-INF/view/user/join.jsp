@@ -142,13 +142,13 @@ input {
 					<input type="text" class="form-control" id="nickname"
 						name="nickname" placeholder="닉네임입력">
 				</div>
-				<div>
-					생년월일
+				<div class ="form-control" style="margin-bottom:5px;">
 					<select id ="endDateYear" name = "endDateYear"></select>
 					-<select id ="endDateMonth" name = "endDateMonth"></select>
 					-<select id ="endDateDate" name = "endDateDate"></select>
+					<span style="float: right">생년월일을 입력하세요.</span>
 				</div>
-				<div class ="form-control">
+				<div class ="form-control"  style="margin-bottom:5px;">
 					<input type="checkbox" id="taste1" name ="taste1"/>
 					<label for ="taste1"><span>고소</span></label>
 					<input type="checkbox" id="taste2" name ="taste2"/>
@@ -161,8 +161,9 @@ input {
 					<label for ="taste5"><span>과일</span></label>
 					<input type="checkbox" id="taste6" name ="taste6"/>
 					<label for ="taste6"><span>새콤</span></label>	
+					<span style="float: right">선호하는 맥주 맛</span>
 				</div>
-				<div  class ="form-control">
+				<div  class ="form-control"  style="margin-bottom:5px;">
 					<input type="checkbox" id="type1" name ="type1"/>
 					<label for ="type1"><span>라거</span></label>
 					<input type="checkbox" id="type2" name ="type2"/>
@@ -170,7 +171,8 @@ input {
 					<input type="checkbox" id="type3" name ="type3"/>
 					<label for ="type3"><span>스타우트</span></label>
 					<input type="checkbox" id="type4" name ="type4"/>
-					<label for ="type4"><span>IPA</span></label>	
+					<label for ="type4"><span>IPA</span></label>
+					<span style="float: right">선호하는 맥주타입</span>	
 				</div>
 				<div style="float:right">
 					<input type="button" id="joinBtn" class="btn" value="JOIN US" />

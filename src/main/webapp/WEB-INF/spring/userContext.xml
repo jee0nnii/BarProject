@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 디비 연걸 -->
+	<bean id="userDao" class="com.bar.user.dao.UserDaoImplForOracle">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
+	</bean>
+	<bean id="userService" class="com.bar.user.service.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+		<!--이건???..... <property name="userDao" ref="userDaoOracle"></property> -->
+	</bean>
+
+</beans>

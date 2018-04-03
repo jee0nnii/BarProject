@@ -5,7 +5,7 @@
 <html>
 
 <head>
-<title>Alstar - Bootstrap one page parallax template</title>
+<title>져니바</title>
 <meta charset="utf-8" />
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -53,7 +53,7 @@
                   <li><a href="#intro">Home</a></li>
                   <li><a href="#about">About Us</a></li> 
                   <li><a href="#service">Services</a></li>
-                  <li class ="list"><a href="<c:url value="/wehave"/>">Works</a></li>
+                  <li class ="list"><a href="<c:url value="/wehave"/>">List</a></li>
                   <li class ="list"><a href="#contact">Contact</a></li>
                   
                   <li class="dropdown nav-toggle">
@@ -138,8 +138,7 @@
 					<div class="section-heading">
 						<h2>Services</h2>
 						<div class="heading-line"></div>
-						<p>We’ve been building unique digital products, platforms, and
-							experiences for the past 6 years.</p>
+						<p>WHAT WE OFFER</p>
 					</div>
 				</div>
 			</div>
@@ -153,21 +152,20 @@
 								<div class="row">
 									<div class="col-sm-12 col-md-offset-1 col-md-6">
 										<div class="wow bounceInLeft">
-											<h4>Website Design</h4>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed do eiusmod tempor incididunt ut labore et dolore
-												magna.</p>
+											<h4>BeerPong</h4>
+											<p>Lol</p>
+											<h5><a href="<c:url value="/wehave"/>">wehave</a></h5>
 										</div>
 									</div>
 									<div class="col-sm-12 col-md-5">
 										<div class="screenshot wow bounceInRight">
-											<img src="static/img/screenshots/1.png"
+											<img src="static/img/screenshots/1.jpg"
 												class="img-responsive" alt="" />
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="item">
+							<!-- <div class="item">
 								<div class="row">
 									<div class="col-sm-12 col-md-offset-1 col-md-6">
 										<div class="wow bounceInLeft">
@@ -202,7 +200,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
 
 						<!-- Indicators -->
@@ -292,7 +290,7 @@
 		</div>
 	</section>
 
-	<!-- Team -->
+	<!-- Team 
 	<section id="team" class="home-section bg-white">
 		<div class="container">
 			<div class="row">
@@ -343,7 +341,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 
 	<!-- Contact -->
 	<section id="contact" class="home-section bg-gray">
@@ -353,9 +351,7 @@
 					<div class="section-heading">
 						<h2>Contact us</h2>
 						<div class="heading-line"></div>
-						<p>If you have any question or just want to say 'hello' to
-							Alstar web studio please fill out form below and we will be get
-							in touch with you within 24 hours.</p>
+						<p>문의사항 등록</p>
 					</div>
 				</div>
 			</div>

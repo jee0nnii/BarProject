@@ -5,7 +5,7 @@
 <html>
 
 <head>
-<title>Alstar - Bootstrap one page parallax template</title>
+<title>져니바</title>
 <meta charset="utf-8" />
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -59,10 +59,9 @@
 			<div class="row">
 				<div class="col-md-offset-2 col-md-8">
 					<div class="section-heading">
-						<h2>Works</h2>
+						<h2>WeHave</h2>
 						<div class="heading-line"></div>
-						<p>We’ve been building unique digital products, platforms, and
-							experiences for the past 6 years.</p>
+						<p>골라골라아아</p>
 					</div>
 				</div>
 			</div>
@@ -74,15 +73,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<p>Copyright &copy; Alstar. All rights reserved.</p>
+					<p>Copyright &copy; Jeony. All rights reserved.</p>
 					<div class="credits">
-						<!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Alstar
-            -->
-						Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+						
+						Designed with <a href="https://bootstrapmade.com/">BootstrapMade</a>
 					</div>
 				</div>
 			</div>
