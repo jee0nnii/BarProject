@@ -7,7 +7,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.bar.user.constants.User;
 
-public class SessionInterceptors extends HandlerInterceptorAdapter{
+public class SessionInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, 
 			HttpServletResponse response, Object handler)

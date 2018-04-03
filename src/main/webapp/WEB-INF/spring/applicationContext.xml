@@ -16,7 +16,7 @@
 			<mvc:exclude-mapping path="/join"/>
 			<mvc:exclude-mapping path="/static/**"/>
 			<mvc:exclude-mapping path="/api/duplicate/**" />
-			<bean id ="sessionInterceptor" class ="com.bar.interceptors.SessionInterceptors"/>
+			<bean id ="sessionInterceptor" class ="com.bar.interceptors.SessionInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
