@@ -51,9 +51,7 @@
 
 <body>
 	<div class="wrapper">
-		<div class="sidenav"></div>
-
-
+		<!-- 주황주황 <div class="sidenav"></div> -->
 		<!-- Works -->
 		<div class="container bg-white">
 			<div class="row">
@@ -66,6 +64,36 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- <!--  -->
+		<div class="row">
+			<div class="col-lg-12">
+
+				<ul id="og-grid" class="og-grid">
+					<c:forEach items="${beerList}" var="beerList">
+						<li><a href="#"> <img
+								src="<c:url value="${beerList.beerImg }"/>"
+								style="width: 200px; height: 200px;" alt="img01" />
+						</a></li>
+						<p>${beerList.beerNameKor}</p>
+						<!-- <li><a href="#"> <img
+							src="https://image.mycelebs.com/beer/new/sq/241338_sq_1477230606.jpg"
+							style="width: 200px; height: 200px;" "alt="img01" />
+					</a></li>
+					<li><a href="#"> <img
+							src="https://image.mycelebs.com/beer/new/sq/241358_sq_1477448309.jpg"
+							style="width: 200px; height: 200px;" alt="img01" />
+					</a></li>
+					<li><a href="#"> <img
+							src="https://image.mycelebs.com/beer/new/sq/241355_sq_1477273995.jpg"
+							style="width: 200px; height: 200px;" alt="img01" />
+					</a></li> -->
+					</c:forEach>
+				</ul>
+
+			</div>
+		</div>
+		<!-- <!--  -->
 
 	</div>
 	<!-- Footer -->
@@ -75,7 +103,7 @@
 				<div class="col-md-12">
 					<p>Copyright &copy; Jeony. All rights reserved.</p>
 					<div class="credits">
-						
+
 						Designed with <a href="https://bootstrapmade.com/">BootstrapMade</a>
 					</div>
 				</div>

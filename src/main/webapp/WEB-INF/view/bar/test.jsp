@@ -59,7 +59,7 @@
                   <li class="dropdown nav-toggle">
                     <a href="#" class="dropdown" data-toggle="dropdown">Dropwdown<b class="caret"></b></a>
                     <ul class="dropdown-menu" style="margin-bottom:20px;">
-                      <li><a href="#">Sub menu</a></li>
+                      <li><a href="<c:url value="/wehave"/>">Sub menu</a></li>
                       <li><a href="#">Sub menu</a></li>
                     </ul>
 					</li>

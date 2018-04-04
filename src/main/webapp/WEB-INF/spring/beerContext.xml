@@ -3,5 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean id="beerDao" class="com.bar.beer.dao.BeerDaoImplForOracle">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
+	</bean>
 
+	<bean id="beerService" class="com.bar.beer.service.BeerServiceImpl">
+		<property name="beerDao" ref="beerDao"></property>
+	</bean>
 </beans>

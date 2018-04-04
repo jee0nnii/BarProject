@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace ="BeerDAO">
+	<select id="selectAll" resultType="BeerVO">
+		SELECT	BEER_ID beerId
+				, BEER_NAME_KOR beerNameKor
+				, BEER_NAME_ENG beerNameEng
+				, BEER_VOLUME beerVolume
+				, BEER_TYPE	beerType
+				, BEER_TASTE beerTaste
+				, BEER_COUNTRY beerCountry
+				, BEER_TEMP beerTemp
+				, BEER_IMG beerImg
+				, BEER_LIKE beerLike
+				, BEER_HATE beerHate
+		FROM	BEER_DESC
+	
+	</select>
+</mapper>

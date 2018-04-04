@@ -142,6 +142,15 @@ input {
 					<input type="text" class="form-control" id="nickname"
 						name="nickname" placeholder="닉네임입력">
 				</div>
+				
+				<div class ="form-control"  style="margin-bottom:5px;">
+					<input type="checkbox" id="female" name ="female"/>
+					<label for ="female"><span>여자</span></label>
+					<input type="checkbox" id="male" name ="male"/>
+					<label for ="male"><span>남자</span></label>
+					<span style="float: right">성별</span>
+				</div>
+				
 				<div class ="form-control" style="margin-bottom:5px;">
 					<select id ="endDateYear" name = "endDateYear"></select>
 					-<select id ="endDateMonth" name = "endDateMonth"></select>
@@ -174,6 +183,7 @@ input {
 					<label for ="type4"><span>IPA</span></label>
 					<span style="float: right">선호하는 맥주타입</span>	
 				</div>
+				
 				<div style="float:right">
 					<input type="button" id="joinBtn" class="btn" value="JOIN US" />
 				</div>

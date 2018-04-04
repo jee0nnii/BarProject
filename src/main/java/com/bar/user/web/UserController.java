@@ -37,10 +37,10 @@ public class UserController {
 	public String viewTestPage() {
 		return "bar/test";
 	}
-	@RequestMapping(value = "/wehave", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/wehave", method = RequestMethod.GET)
 	public String viewWeHavePage() {
 		return "bar/wehave";
-	}
+	}*/
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String viewMainPage() {
 		return "bar/main";
