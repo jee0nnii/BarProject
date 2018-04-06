@@ -28,7 +28,6 @@ input {
 </style>
 <script type="text/javascript">
 	$().ready(function() {
-		
 		$("#email").keyup(function(){
 			var inputEmail = $(this).val();
 			if (inputEmail != ""){
@@ -45,65 +44,28 @@ input {
 				
 			}
 		});
-		//0328
-		$("#endDateYear, #endDateMonth").change(
-				function() {
-					var data = $(this);
-					if (data.attr("id") == "endDateYear") {
-						var year = data.val();
-						var month = $("#endDateMonth").val();
-					} else {
-						var year = $("#endDateYear").val();
-						var month = data.val();
-					}
-					$.post("<c:url value="/api/date/max/"/>" + year
-							+ "/" + month, {}, function(response) {
-						$("#endDateDate").find("option").remove();
-						setDate("#endDateDate", parseInt(response));
-					});
-				});
-
-				//1. 검색 날짜 셋팅 : 
-				setYear("#endDateYear", parseInt("${search.endDateYear-19}"),
-						parseInt("${search.endDateYear}"));
-
-				setMonth("#endDateMonth");
-
-				setDate("#endDateDate", parseInt("${endDateMaximumDate}"));
-
-				// 날짜 셋팅
-				$("#endDateYear").val("${search.endDateYear}");
-				$("#endDateMonth").val("${search.endDateMonth}");
-				$("#endDateDate").val("${search.endDateDate}");
-
-				function setYear(elementId, startYear, endYear) {
-					for (var i = startYear; i <= endYear; i++) {
-						$(elementId).append($("<option>", {
-							value : i,
-							text : i
-						}));
-					}
-				}
-				function setMonth(elementId) {
-					for (var i = 1; i < 13; i++) {
-						var value = (i < 10) ? "0" + i : i;
-						$(elementId).append($("<option>", {
-							value : value,
-							text : value
-						}));
-					}
-				}
-				function setDate(elementId, maximumdate) {
-					for (var i = 1; i <= maximumdate; i++) {
-						var value = (i < 10) ? "0" + i : i;
-						$(elementId).append($("<option>", {
-							value : value,
-							text : value
-						}));
-					}
-				}
-		//0328
+		//0404
+		setMonth("#birthMonth");
+		setDate("#birthDay");
 		
+		function setMonth(elementId) {
+			for (var i = 1; i < 13; i++) {
+				var value = (i < 10) ? "0" + i : i;
+				$(elementId).append($("<option>", {
+					value : value,
+					text : value
+				}));
+			}
+		}
+		function setDate(elementId) {
+			for (var i = 1; i <= 31; i++) {
+				var value = (i < 10) ? "0" + i : i;
+				$(elementId).append($("<option>", {
+					value : value,
+					text : value
+				}));
+			}
+		}
 		
 		//폼에 들어온 값 처리 이벤트 시작
 		$("#joinBtn").click(function() {
@@ -144,17 +106,21 @@ input {
 				</div>
 				
 				<div class ="form-control"  style="margin-bottom:5px;">
-					<input type="checkbox" id="female" name ="female"/>
+					<input type="checkbox" id="female" name ="sex" value="F"/>
 					<label for ="female"><span>여자</span></label>
-					<input type="checkbox" id="male" name ="male"/>
+					<input type="checkbox" id="male" name ="sex" value = "M"/>
 					<label for ="male"><span>남자</span></label>
 					<span style="float: right">성별</span>
 				</div>
 				
 				<div class ="form-control" style="margin-bottom:5px;">
-					<select id ="endDateYear" name = "endDateYear"></select>
-					-<select id ="endDateMonth" name = "endDateMonth"></select>
-					-<select id ="endDateDate" name = "endDateDate"></select>
+					<select id ="birthYear" name = "birthYear">
+					<c:forEach var = "i" begin = "${currentYear-50 }" varStatus="loop" end="${currentYear-19 }" step="1">
+					<option value=${loop.end-loop.count+1}>${loop.end-loop.count+1 }</option>
+					</c:forEach>
+					</select>
+					-<select id ="birthMonth" name = "birthMonth"></select>
+					-<select id ="birthDay" name = "birthDay"></select>
 					<span style="float: right">생년월일을 입력하세요.</span>
 				</div>
 				<div class ="form-control"  style="margin-bottom:5px;">

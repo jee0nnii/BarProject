@@ -28,6 +28,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public boolean findUserPwd(UserVO userVO) {
+		
+		return false;
+	}
+
+	
+	@Override
 	public UserVO readUser(UserVO userVO) {
 		// 사용자의 email로 salt된 값을 가져옮
 		String salt = userDao.selectSalt(userVO.getEmail());
@@ -52,4 +59,5 @@ public class UserServiceImpl implements UserService {
 		return userDao.selectDuplicateNickname(nickname) > 0;
 	}
 
+	
 }

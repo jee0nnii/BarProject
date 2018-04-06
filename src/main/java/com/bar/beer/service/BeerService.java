@@ -1,10 +1,15 @@
 package com.bar.beer.service;
 
-import java.util.List;
-
+import com.bar.beer.vo.BeerPageVO;
 import com.bar.beer.vo.BeerVO;
+
+import web.pager.explorer.PageExplorer;
 
 public interface BeerService {
 
-	public List<BeerVO> getAll();
+	//public List<BeerVO> getAll();
+	//페이징처리	
+	public PageExplorer getAll(BeerPageVO beerPageVO);
+	
+	public BeerVO getOne(int beerId);
 }

@@ -3,7 +3,36 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace ="BeerDAO">
-	<select id="selectAll" resultType="BeerVO">
+	<select id="selectAll" resultType="BeerVO" parameterType="BeerPageVO">
+		SELECT	*
+		FROM	(
+				SELECT	ROWNUM RNUM
+						, B.*
+				FROM	(
+						SELECT	BEER_ID beerId
+								, BEER_NAME_KOR beerNameKor
+								, BEER_NAME_ENG beerNameEng
+								, BEER_VOLUME beerVolume
+								, BEER_TYPE	beerType
+								, BEER_TASTE beerTaste
+								, BEER_COUNTRY beerCountry
+								, BEER_TEMP beerTemp
+								, BEER_IMG beerImg
+								, BEER_LIKE beerLike
+								, BEER_HATE beerHate
+						FROM	BEER_DESC B
+				) B
+				WHERE	ROWNUM <![CDATA[ <= ]]> #{endNumber}
+		)
+		WHERE	RNUM <![CDATA[ >= ]]> #{startNumber}
+	</select>
+	
+	<select id ="selectCountAll" resultType="_int" parameterType="BeerPageVO">
+		SELECT	COUNT(B.BEER_ID)
+		FROM	BEER_DESC B
+	</select>
+	
+	<select id="selectOne" parameterType = "_int" resultType="BeerVO">
 		SELECT	BEER_ID beerId
 				, BEER_NAME_KOR beerNameKor
 				, BEER_NAME_ENG beerNameEng
@@ -16,6 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				, BEER_LIKE beerLike
 				, BEER_HATE beerHate
 		FROM	BEER_DESC
+		WHERE	BEER_ID = #{beerId}
 	
 	</select>
 </mapper>

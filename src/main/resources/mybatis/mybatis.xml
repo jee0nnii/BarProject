@@ -7,6 +7,7 @@
 	<typeAliases>
 		<typeAlias type="com.bar.user.vo.UserVO" alias="UserVO"/> 
 		<typeAlias type="com.bar.beer.vo.BeerVO" alias="BeerVO"/> 
+		<typeAlias type="com.bar.beer.vo.BeerPageVO" alias="BeerPageVO"/> 
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/bar/user/dao/sql/userDao.xml"/>
