@@ -21,7 +21,7 @@
 	media="screen">
 <link href="<c:url value="/static/color/default.css"/>" rel="stylesheet"
 	media="screen">
-
+<link href="<c:url value="/static/css/search.css"/>" rel="stylesheet">
 <script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
 	type="text/javascript"></script>
 
@@ -84,7 +84,42 @@ ul.flex {
 	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 </style>
+<!-- search js-->
+<script type="text/javascript">
+	function searchToggle(obj, evt) {
+		var container = $(obj).closest('.search-wrapper');
 
+		if (!container.hasClass('active')) {
+			container.addClass('active');
+			evt.preventDefault();
+		} else if (container.hasClass('active')
+				&& $(obj).closest('.input-holder').length == 0) {
+			container.removeClass('active');
+			// clear input
+			container.find('.search-input').val('');
+			// clear and hide result container when we press close
+			container.find('.result-container').fadeOut(100, function() {
+				$(this).empty();
+			});
+		}
+	}
+
+	function submitFn(obj, evt) {
+		value = $(obj).find('.search-input').val().trim();
+
+		_html = "검색 단어는 : ";
+		if (!value.length) {
+			_html = "검색어를 입력하세요:D";
+		} else {
+			_html += "<b>" + value + "</b>";
+		}
+
+		$(obj).find('.result-container').html('<span>' + _html + '</span>');
+		$(obj).find('.result-container').fadeIn(100);
+
+		evt.preventDefault();
+	}
+</script>
 </head>
 
 <body>
@@ -97,21 +132,39 @@ ul.flex {
 			<a href="#">Contact</a>
 		</div>
 
-		
+
 
 
 		<div id="main">
 
-			<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
-				open</span>
-
-
 			<!-- Works -->
 			<div class="container bg-white">
 				<div class="row">
-					<div class="col-md-offset-2 col-md-8">
+					<div class="col-md-offset-1 col-md-10" style="text-align: left">
+
+						<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;open</span>
+						<div id="statusChk" style="display: inline-block; float: right;">
+							<span>LOGIN</span> <span>MYPAGE</span>
+						</div>
+
 						<div class="section-heading">
 							<h2>WeHave</h2>
+							<!-- search -->
+							<form onsubmit="submitFn(this, event);">
+								<div class="search-wrapper">
+									<div class="input-holder">
+										<input type="text" class="search-input"
+											placeholder="Type to Search" />
+										<button class="search-icon"
+											onclick="searchToggle(this, event);">
+											<span></span>
+										</button>
+									</div>
+									<span class="close" onclick="searchToggle(this, event);"></span>
+									<div class="result-container"></div>
+								</div>
+							</form>
+
 							<div class="heading-line"></div>
 							<p>골라골라아아</p>
 						</div>
@@ -156,17 +209,17 @@ ul.flex {
 	</footer>
 
 	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<!-- sidebar -->
+	<script>
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
+			document.getElementById("main").style.marginLeft = "250px";
+		}
 
-<script>
-	function openNav() {
-		document.getElementById("mySidenav").style.width = "250px";
-		document.getElementById("main").style.marginLeft = "250px";
-	}
-
-	function closeNav() {
-		document.getElementById("mySidenav").style.width = "0";
-		document.getElementById("main").style.marginLeft = "0";
-	}
-</script>
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("main").style.marginLeft = "0";
+		}
+	</script>
 </body>
 </html>

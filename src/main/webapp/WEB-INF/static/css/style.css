@@ -141,7 +141,7 @@ nav.navbar{
 	position: fixed;
 	/* top: -72px; 시작부터 상단에 고정 */ 
 	margin-bottom: 0px;
-	padding: 10px 0px 10px 0px;
+	/* padding: 10px 0px 10px 0px; */
 	width: 100%;
 	border-radius: 0px;
 	transition: all 0.2s;
@@ -359,8 +359,56 @@ nav.navbar.fixed-to-top{
   left: auto;
   right: 99.5%;
 } 
+/* ================================
+star-rating
+================================= */
+#writeEvalForm, #writeEvalForm div, .rating-stars, .success-box{
+	display: inline-block;
+}
+.rating-widget{
+	display: inline-block;
+	position:relative;
+	top:-15px;
+	left:-5px;
+}
+#writeEvalBtn{
+	position:relative;
+	top:-10px;
+	height : 50px;
+}
 
+.text-message span {
+	font-size: 1.5em;
+	font-weight: bold;
+	padding: 0px 5px;
+}
+/* Rating Star Widgets Style */
+.rating-stars ul {
+	list-style-type: none;
+	padding: 0;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
 
+.rating-stars ul>li.star {
+	display: inline-block;
+}
+
+/* Idle State of the stars */
+.rating-stars ul>li.star>i.fa {
+	font-size: 2em; /* Change the size of the stars */
+	color: #ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul>li.star.hover>i.fa {
+	color: #FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul>li.star.selected>i.fa {
+	color: #FF912C;
+}
 
 /* ================================
 Home sections
