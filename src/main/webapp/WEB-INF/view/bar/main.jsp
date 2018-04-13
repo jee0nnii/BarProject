@@ -218,11 +218,11 @@ footer a:hover {
 textarea {
 	resize: none;
 }
+
 </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="50">
-
 
 
 

@@ -24,11 +24,15 @@
 
 <script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
 	type="text/javascript"></script>
-<style>
+<script type="text/javascript">
+$().ready(function(){
+	$("#wehave").click(function(){
+	    $("li #wehave").removeClass("current");
+	    location.href="<c:url value="/wehave"/>";
+	});
+});
 
-
-</style>
-
+</script>
 
 </head>
 
@@ -48,21 +52,20 @@
 				<a class="navbar-brand" href="index.html">JEONY</a>
 
 			</div>
-			<div class="navigation">
+			<div id ="dropmenu" class="navigation">
 				  <ul class="nav navbar-nav">
                   <li><a href="#intro">Home</a></li>
                   <li><a href="#about">About Us</a></li> 
                   <li><a href="#service">Services</a></li>
-                  <li class ="list"><a href="<c:url value="/wehave"/>">List</a></li>
-                  <li class ="list"><a href="#contact">Contact</a></li>
+                  <li class ="has-sub" id ="list">List
+                  	<ul>
+                  		<li id ="wehave"><a href="<c:url value="/wehave"/>">wehave</a></li>
+                  		<li style="color:black"><a href="<c:url value="/wehave"/>">List</a></li>
+                  		
+                  	</ul>
+                  </li>
+                  <li><a href="#contact">Contact</a></li>
                   
-                  <li class="dropdown nav-toggle">
-                    <a href="#" class="dropdown" data-toggle="dropdown">Dropwdown<b class="caret"></b></a>
-                    <ul class="dropdown-menu" style="margin-bottom:20px;">
-                      <li><a href="<c:url value="/wehave"/>">Sub menu</a></li>
-                      <li><a href="#">Sub menu</a></li>
-                    </ul>
-					</li>
                   </ul>
 			</div>
 			

@@ -10,4 +10,12 @@
 	<bean id="beerService" class="com.bar.beer.service.BeerServiceImpl">
 		<property name="beerDao" ref="beerDao"></property>
 	</bean>
+	
+	<bean id="beerEvalDao" class="com.bar.beer.dao.BeerEvalDaoImplForOracle">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
+	</bean>
+
+	<bean id="beerEvalService" class="com.bar.beer.service.BeerEvalServiceImpl">
+		<property name="beerEvalDao" ref="beerEvalDao"></property>
+	</bean>
 </beans>

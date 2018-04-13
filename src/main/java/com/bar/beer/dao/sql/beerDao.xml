@@ -45,7 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				, BEER_LIKE beerLike
 				, BEER_HATE beerHate
 		FROM	BEER_DESC
-		WHERE	BEER_ID = #{beerId}
-	
+		WHERE	BEER_ID = #{beerId}	
 	</select>
+	
 </mapper>

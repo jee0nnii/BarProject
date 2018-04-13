@@ -1,5 +1,7 @@
 package com.bar.beer.vo;
 
+import com.bar.user.vo.UserVO;
+
 public class BeerVO {
 
 	private int beerId;
@@ -13,6 +15,15 @@ public class BeerVO {
 	private String beerLike;
 	private String beerHate;
 	private String beerImg;
+
+	private UserVO userVO;
+	public UserVO getUserVO() {
+		return userVO;
+	}
+
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
 
 	public int getBeerId() {
 		return beerId;

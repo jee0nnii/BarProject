@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace ="BeerEvalDAO">
+	
+	<resultMap type="BeerEvalVO" id="BeerEvalVOMap">
+		<id column ="BEER_EVAL_ID" property = "beerEvalId"/>
+		<result column ="BEER_EVAL_POINT" property = "beerEvalPoint"/>
+		<result column ="BEER_EVAL_TALK" property = "beerEvalTalk"/>
+		<result column ="E_USER_ID" property = "id"/>
+		<result column ="E_BEER_ID" property = "beerId"/>
+		<result column ="EVAL_REGIST_DATE" property = "evalRegistDate"/>
+
+		<association property="userVO" javaType="UserVO">
+			<id column ="U_USER_ID" property="id"/>
+			<result column="USER_NICKNAME" property ="nickname"/>
+			<result column="USER_EMAIL" property ="email"/>
+			<result column="USER_SEX" property ="sex"/>
+		</association> 
+		
+		<association property="beerVO" javaType="BeerVO">
+			<id column ="B_BEER_ID" property="beerId"/>
+			<result column="BEER_NAME_KOR" property ="beerNameKor"/>
+			<result column="BEER_NAME_ENG" property ="beerNameEng"/>
+			<result column="BEER_VOLUME" property ="beerVolume"/>
+			<result column="BEER_TYPE" property ="beerType"/>
+			<result column="BEER_TASTE" property ="beerTaste"/>
+			<result column="BEER_COUNTRY" property ="beerCountry"/>
+			<result column="BEER_TEMP" property ="beerTemp"/>
+			<result column="BEER_IMG" property ="beerImg"/>
+			<result column="BEER_LIKE" property ="beerLike"/>
+			<result column="BEER_HATE" property ="beerHate"/>		
+		</association>
+	</resultMap>
+
+	<select id="selectAllEvals" parameterType="_int" resultMap="BeerEvalVOMap">
+		SELECT	E.BEER_EVAL_ID
+				, E.BEER_EVAL_POINT
+				, E.BEER_EVAL_TALK
+				, E.EVAL_REGIST_DATE
+				, E.USER_ID E_USER_ID
+				, E.BEER_ID E_BEER_ID
+				, B.BEER_ID B_BEER_ID
+				, B.BEER_NAME_KOR 
+				, B.BEER_NAME_ENG 
+				, B.BEER_VOLUME 
+				, B.BEER_TYPE	
+				, B.BEER_TASTE 
+				, B.BEER_COUNTRY 
+				, B.BEER_TEMP 
+				, B.BEER_IMG 
+				, B.BEER_LIKE
+				, B.BEER_HATE
+				, U.USER_ID U_USER_ID
+				, U.USER_NICKNAME
+		FROM	BEER_EVAL E
+				, BEER_DESC B
+				, BAR_USER U
+		WHERE	E.BEER_ID = #{beerId}
+		AND		E.USER_ID = U.USER_ID(+)
+	</select>
+	
+	<select id="selectOneEval" parameterType="_int" resultMap="BeerEvalVOMap">
+		SELECT	E.BEER_EVAL_ID
+				, E.BEER_EVAL_POINT
+				, E.BEER_EVAL_TALK
+				, E.EVAL_REGIST_DATE
+				, U.USER_ID U_USER_ID
+				, B.BEER_ID B_BEER_ID	
+		FROM	BEER_EVAL E
+				, BEER_DESC B	
+				, BAR_USER U
+		WHERE	U.USER_ID = E.USER_ID
+		AND		B.BEER_ID = #{beerId}
+	</select>
+	
+	<insert id ="insertEval" parameterType="BeerEvalVO">
+		INSERT	INTO BEER_EVAL (
+								BEER_EVAL_ID
+								, BEER_EVAL_POINT
+								, BEER_EVAL_TALK
+								, USER_ID
+								, BEER_ID
+								, EVAL_REGIST_DATE
+		)VALUES(
+				BEER_EVAL_ID_SEQ.NEXTVAL
+				, #{beerEvalPoint}
+				, #{beerEvalTalk}
+				, #{id}
+				, #{beerId}
+				, SYSDATE
+		)
+	</insert>
+	
+</mapper>

@@ -6,14 +6,21 @@
 	
 	<bean id="mainController" class="com.bar.main.web.MainController" />
 	
+	<bean id="beerEvalController" class="com.bar.beer.web.BeerEvalController">
+		<property name ="beerEvalService" ref="beerEvalService"/>
+	
+	</bean>
+	
 	<bean id="beerController" class="com.bar.beer.web.BeerController">
 		<property name="beerService" ref="beerService"></property>
+		<property name="beerEvalService" ref="beerEvalService" />
 	</bean>
 	
 	<!--회원가입 컨트롤러!!! -->
 	<bean id="userController" class="com.bar.user.web.UserController">
 		<!-- 프로퍼티 추가!! -->
 		<property name="userService" ref="userService" />
+		
 	</bean>
 
 </beans>

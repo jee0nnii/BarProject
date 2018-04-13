@@ -33,10 +33,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 	<select id="selectUser" parameterType="UserVO" resultType="UserVO">
-		SELECT	USER_ID
-				, USER_EMAIL
-				, USER_NICKNAME
-				, USER_PASSWORD
+		SELECT	USER_ID id
+				, USER_EMAIL email
+				, USER_NICKNAME nickname
+				, USER_PASSWORD password
 				, SALT
 		FROM	BAR_USER
 		WHERE	USER_EMAIL = #{email}

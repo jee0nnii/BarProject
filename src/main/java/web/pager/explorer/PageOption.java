@@ -3,7 +3,7 @@ package web.pager.explorer;
 public class PageOption {
 
 
-    private String formId = "searchForm";
+    private String formId = "pageForm";
 
     private String link = "pageNo";
 

@@ -28,7 +28,10 @@ public class UserController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-
+	@RequestMapping(value = "/dropdown", method = RequestMethod.GET)
+	public String viewDropDownPage() {
+		return "bar/beer/dropdown";
+	}
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String viewTestPage() {
 		return "bar/test";

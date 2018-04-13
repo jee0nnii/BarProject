@@ -6,11 +6,13 @@
 	<!-- 패키지 통합관리 -->
 	<typeAliases>
 		<typeAlias type="com.bar.user.vo.UserVO" alias="UserVO"/> 
-		<typeAlias type="com.bar.beer.vo.BeerVO" alias="BeerVO"/> 
+		<typeAlias type="com.bar.beer.vo.BeerVO" alias="BeerVO"/>  
 		<typeAlias type="com.bar.beer.vo.BeerPageVO" alias="BeerPageVO"/> 
+		<typeAlias type="com.bar.beer.vo.BeerEvalVO" alias="BeerEvalVO"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/bar/user/dao/sql/userDao.xml"/>
 		<mapper resource="com/bar/beer/dao/sql/beerDao.xml"/>
+		<mapper resource="com/bar/beer/dao/sql/beerEvalDao.xml"/>
 	</mappers>
 </configuration>

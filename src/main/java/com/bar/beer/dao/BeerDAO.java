@@ -14,4 +14,6 @@ public interface BeerDAO {
 	public int selectCountAll(BeerPageVO beerPageVO);
 	//0406 맥주 하나만 
 	public BeerVO selectOne(int beerId);
+	//0410 맥주 맛 별
+	
 }
