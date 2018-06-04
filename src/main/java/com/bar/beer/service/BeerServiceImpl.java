@@ -1,5 +1,7 @@
 package com.bar.beer.service;
 
+import java.util.List;
+
 import com.bar.beer.dao.BeerDAO;
 import com.bar.beer.vo.BeerPageVO;
 import com.bar.beer.vo.BeerVO;
@@ -27,13 +29,29 @@ public class BeerServiceImpl implements BeerService{
 		Pager pager = PagerFactory.getPager(Pager.ORACLE, beerPageVO.getPageNo()+"",
 				beerDao.selectCountAll(beerPageVO));
 		PageExplorer pageExplorer = pager.makePageExplorer(ClassicPageExplorer.class, beerPageVO);
-		pageExplorer.setList(beerDao.selecAll(beerPageVO));
+		pageExplorer.setList(beerDao.selectAll(beerPageVO));
 		return pageExplorer;
 	}
 
 	@Override
 	public BeerVO getOne(int beerId) {
 		return beerDao.selectOne(beerId);
+	}
+	//좋아요 수 확인
+	@Override
+	public boolean chooseLikeBeer(int beerId) {
+		int likePoint = beerDao.incrementBeerLike(beerId);
+		return likePoint > 0;
+	}
+
+	@Override
+	public List<BeerVO> getTaste(int beerTasteId) {
+		return beerDao.selectFromTaste(beerTasteId);
+	}
+
+	@Override
+	public List<BeerVO> getType(int beerTypeId) {
+		return beerDao.selectFromType(beerTypeId);
 	}
 
 }

@@ -3,13 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <title>맥주상세페이지</title>
 <meta charset="utf-8" />
-<meta
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-	name="viewport">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <!-- css -->
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700,800"
@@ -27,16 +24,19 @@
 
 <script type="text/javascript">
 	$().ready(function() {
+		loadEvals(0);
 		function loadEvals(scrollTop) {
 		$.get("<c:url value="/api/evalRead/${desc.beerId}"/>",
 				{}, function(response) {
+					var test = ${desc.beerId};
+					console.log(test);
 				for ( var i in response) {
 					appendEvals(response[i]);
+					console.log(response);
 				}
 				$(window).scrollTop(scrollTop);
 				});
 		}
-
 		$("#writeEvalBtn").click(function() {
 			//잘들어가는지확인
 			console.log($("#writeEvalForm").serialize());
@@ -62,19 +62,19 @@
 		/* 댓글 들어갈 창*/
 		function appendEvals(eval) {
 			var evalDiv = $("<div class ='eval'></div>");
-			var nickname = eval.userVO.nickname;/*  + "(" + eval.userVO.email + ")" */
-
-			var top = $("<span class = 'writer'>" + nickname
-					+ "</span><span class = 'regist-date'>"
-					+ eval.evalRegistDate + "</span>")
-			evalDiv.append(top);
-
-			var body = $("<div class = 'body'>"
-					+ eval.beerEvalTalk + "</div>");
+			var hrbar = $("<hr/>");
+			evalDiv.append(hrbar);
+			var nickname = eval.userVO.nickname + "[" + eval.userVO.email + "]";
+			var givePoint = $("<div class = 'col-md-3 givePoint' style ='display:inline-block;'><span class = 'writer'>" + nickname+ "</span></div>")
+			evalDiv.append(givePoint);
+			var body = $("<div class = 'col-md-7 body' style ='display:inline-block;'>" + eval.beerEvalTalk + "</div>");
 			evalDiv.append(body);
-
+			
+			var down = $("<div class = 'regist-date' style ='display:inline-block;'>"
+					+ eval.evalRegistDate + "</div>")
+			evalDiv.append(down);
+			
 			$("#beerEval").append(evalDiv);
-
 		}
 
 		/* star rating */
@@ -125,57 +125,172 @@
 	});
 </script>
 <style>
+textarea{
+width:100%;
+}
+/* responsive sidebar */
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #FE7A66;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
+}
+
+.sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #333427;
+	display: block;
+	transition: 0.3s;
+	text-align : left;
+}
+#opennav{
+	color: #333427;
+}
+.sidenav a:hover {
+	color: #f1f1f1;
+	
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+#main {
+	transition: margin-left .5s;
+	padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
+}
+.beerInfo{
+font-size: 15px;
+}
+
+.beerInfo div{
+margin-bottom: 10px;
+}
 </style>
 </head>
 
 <body>
 	<div class="wrapper">
-		<!-- Works -->
-		<div class="container bg-white">
-			<div class="row">
-				<div class="col-md-offset-2 col-md-8">
+	
+	
+	<!-- sidebar  -->
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="<c:url value ="/main"/>"><i class="fa fa-home" style="font-size:24px"></i>&nbsp;&nbsp;MAIN</a>
+			<a href="<c:url value ="/wehave"/>">WE HAVE</a> 
+			<a href="<c:url value ="/talk"/>"><i class="fa fa-comments" style="font-size:24px"></i>&nbsp;&nbsp;TALK</a>
+		</div>
+
+	
+	<div id="main">
+
+			<!-- 로그인 상태 확인-->
+			<div class="container bg-white">
+				<div class="row">
+					<div class="col-md-offset-1 col-md-10" style="text-align: left">
+						<span id ="opennav" style="font-size: 25px; cursor: pointer" onclick="openNav()">&#9776;&nbsp;open</span>
+						<div id="statusChk" style="display: inline-block; float: right;">
+							
+							<c:if test="${empty sessionScope.__USER__ }">
+								<span id="goLogin">JOIN</span>
+							</c:if>
+							<c:if test="${not empty sessionScope.__USER__ }">
+								${sessionScope.__USER__.nickname}, Hellooo:D &nbsp;&nbsp;
+								<span id="goMypage"><a href="<c:url value="/mypage"/>">MYPAGE</a></span>&nbsp;&nbsp;
+							</c:if>	
+							<c:if test="${empty sessionScope.__USER__}">
+								<span><a href="<c:url value="/login"/>">LOGIN</a></span>
+							</c:if>
+							<c:if test="${not empty sessionScope.__USER__ }">
+								<span><a href="<c:url value="/logout"/>">LOGOUT</a></span>
+							</c:if>
+							
+							
+							
+						</div>
+								
 					<div class="section-heading">
-						<h2>BeerDesc</h2>
-						<div class="heading-line"></div>
-						<p>상세 페이지</p>
+							<h2>BEER DESC</h2>
+							
+							<div class="heading-line" style="float:left"></div><br>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+
 
 		<!-- detail  -->
 		<div class="row">
 			<div class="col-md-offset-1 col-md-4">
-				<img src="<c:url value="${desc.beerImg }"/>" />
+				<img src="<c:url value="${desc.beerImg }"/>" /><br>
+				
+				<a href="<c:url value = "/chooseLike/${desc.beerId}"/>">
+				<img src = "<c:url value="/static/img/like/like.png"/>" style ="width:30px"/>
+				</a><span>${desc.beerLike }</span>
+				
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-5 beerInfo">
 				<h4>${desc.beerNameKor }</h4>
 				<hr />
-				<p>${desc.beerNameEng }</p>
-				제조국가 : <span>${desc.beerCountry }</span><br> 타입 : <span>${desc.beerType }</span><br>
-				맛 : <span>${desc.beerTaste }</span><br> 도수 : <span>${desc.beerVolume }</span><br>
-				적정온도 : <span>${desc.beerTemp }</span> <br>
+				
+				<c:if test="${sessionScope.__USER__.email == 'admin' }">
+				<div style="text-align:right;"><a id ="deleteBeer" href="<c:url value="/beer/delete/${desc.beerId }"/>">삭제하기</a></div>
+				</c:if>
+				
+				<div><h5>${desc.beerNameEng }</h5></div>
+				<div class="col-md-3">
+				<div>제조국가</div> 
+				<div>타입</div>
+				<div>맛 </div>
+				<div>도수</div>
+				<div>적정온도</div>
+				
+				
+				</div>
+				<div>
+				<div> ${desc.beerCountry }</div> 
+				<div> ${desc.beerTypeFullname }</div>
+				<div>${desc.beerTasteVO.beerTasteName}</div>
+				<div>${desc.beerVolume }</div>
+				<div>${desc.beerTemp }</div>
+				</div>
 			</div>
+			
+			
+			
 		</div>
+		<br><br><br><br>
 		<!-- detail -->
 		<!-- evaluation -->
 		<div class="row">
 			<div class="col-md-offset-2 col-md-8">
-				<h4>맥주 평가 부분</h4>
+				<h4 style ="text-align:left;margin-left:20px;">Evaluation</h4>
 				<hr>
-				<div id="beerEval">
-					<c:forEach items="${beerEval }" var="beerEval">
-						<div class='eval'>
-							<span class='writer'>${beerEval.userVO.nickname }</span> <span
-								class='regist-date'>${beerEval.evalRegistDate }</span>
-							<div class='body'>${beerEval.beerEvalTalk }</div>
-						</div>
-					</c:forEach>
-				</div>
-				
-				<div id="createEvalDiv">
+								
+				<div id="createEvalDiv" class='col-md-12'>
 					<div id="createEval">
-						<div class='rating-widget'>
+						<div class='col-md-4 rating-widget' style ="display: inline-block;position: relative;top: 11px;left: -35px;">
 							<div class='rating-stars text-center'>
 								<ul id='stars'>
 									<li class='star' title='Poor' data-value='1'><i
@@ -194,29 +309,31 @@
 								<div class='text-message'></div>
 							</div>
 						</div>
-
-						<form id="writeEvalForm">
-							<div class="beerEvaluation">
-								<!-- Rating Stars Box -->
-								<div>
-									<input type="hidden" name="beerEvalPoint" />
+							<form id="writeEvalForm">
+								<div class="beerEvaluation">
+									<!-- Rating Stars Box -->
+									<div>
+										<input type="hidden" name="beerEvalPoint" />
+									</div>
+									<div>
+										<textarea id="beerEvalTalk" name="beerEvalTalk" cols=75></textarea>
+									</div>
+									<div>
+										<input type="button" class="btn" id="writeEvalBtn" value="등록" style="position:relative;top:-21px;height : 50px;" />
+									</div>
 								</div>
-								<div>
-									<textarea id="beerEvalTalk" name="beerEvalTalk"></textarea>
-								</div>
-								<div>
-									<input type="button" class="btn" id="writeEvalBtn" value="등록" />
-								</div>
-							</div>
-						</form>
+							</form>
 					</div>
-					<!-- evaluation -->
-
 				</div>
+				
+				<!-- eval result -->
+				<div id="beerEval">
+				<!-- 이 밑으로 쌓임  -->					
+				</div>				
 			</div>
-		</div>
+		</div><br><br><br><br>
 	</div>
-
+</div>
 	<!-- Footer -->
 	<footer>
 		<div class="container">
@@ -234,6 +351,17 @@
 
 	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
+	<script>
+	/* sidebar  */
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
+			document.getElementById("main").style.marginLeft = "250px";
+		}
 
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("main").style.marginLeft = "0";
+		}
+	</script>
 </body>
 </html>

@@ -306,6 +306,7 @@ nav.navbar.fixed-to-top{
 	background: #666;
 	color: #FFF;
 	/*   border: 1px solid #0082e7; */
+	opacity:0.8;
 	border-top: 0 none;
 	line-height: 150%;
 	padding: 16px 20px;
@@ -329,7 +330,7 @@ nav.navbar.fixed-to-top{
   border-top: 1px solid #333;
 } */
 #dropmenu ul ul li:hover>a {
-	background: #FE7A66;
+	background:#fff;
 }
 
 #dropmenu ul ul li.has-sub>a:after {
@@ -368,12 +369,12 @@ star-rating
 .rating-widget{
 	display: inline-block;
 	position:relative;
-	top:-15px;
-	left:-5px;
+	top:15px;
+	left:-35px;
 }
 #writeEvalBtn{
 	position:relative;
-	top:-10px;
+	top:-21px;
 	height : 50px;
 }
 

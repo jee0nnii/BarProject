@@ -3,12 +3,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+	<bean id="qnaController" class="com.bar.talk.web.QnaController">
+		<property name="qnaService" ref = "qnaService"/>
+	</bean>
 	
-	<bean id="mainController" class="com.bar.main.web.MainController" />
+	<bean id="mainController" class="com.bar.main.web.MainController">
+		<property name="mainService" ref = "mainService"/>
+	</bean>
+	
+	<bean id="adminController" class="com.bar.admin.web.AdminController">
+		<property name ="adminService" ref ="adminService"/>
+	</bean>
 	
 	<bean id="beerEvalController" class="com.bar.beer.web.BeerEvalController">
 		<property name ="beerEvalService" ref="beerEvalService"/>
-	
 	</bean>
 	
 	<bean id="beerController" class="com.bar.beer.web.BeerController">

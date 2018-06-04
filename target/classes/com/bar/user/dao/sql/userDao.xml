@@ -3,6 +3,49 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="UserDAO">
+	<resultMap type = "UserVO" id ="UserVOMap">
+		<id column = "USER_ID" property ="id"/>
+		<result column = "USER_NAME" property ="name"/>
+		<result column = "USER_NICKNAME" property ="nickname"/>
+		<result column = "USER_EMAIL" property ="email"/>
+		<result column = "USER_PASSWORD" property ="password"/>
+		<result column = "USER_REGIST_DATE" property ="registDate"/>
+		<result column = "USER_BIRTHDAY" property ="birthday"/>
+	
+		<association property="beerVO" javaType = "BeerVO">
+			<id column="BEER_ID" property="beerId"/>
+			<result column="BEER_NAME_KOR" property="beerNameKor"/>
+			<result column="BEER_NAME_ENG" property="beerNameEng"/>
+			<result column="BEER_VOLUME" property="beerVolume"/>
+			<result column="BEER_TYPE_FULLNAME" property="beerTypeFullname"/>
+			<result column="B_BEER_TASTE_ID" property="beerTasteId"/>
+			<result column="B_BEER_TYPE_ID" property="beerTypeId"/>
+			<result column="BEER_COUNTRY" property="beerCountry"/>
+			<result column="BEER_TEMP" property="beerTemp"/>
+			<result column="BEER_IMG" property="beerImg"/>
+			<result column="BEER_LIKE" property="beerLike"/>
+		</association>
+	
+		<association property="userFavTasteVO" javaType="UserFavTasteVO">
+			<result column ="FTS_USER_ID" property = "id"/>
+			<result column ="FTS_BEER_TASTE_ID" property = "beerTasteId"/>
+		</association>
+		<association property="userFavTypeVO" javaType="UserFavTypeVO">
+			<result column ="FTY_USER_ID" property = "id"/>
+			<result column ="FTY_BEER_TYPE_ID" property = "beerTypeId"/>
+		</association>
+		
+		<association property="beerTypeVO" javaType="BeerTypeVO">
+			<result column ="BTY_BEER_TYPE_ID" property = "beerTypeId"/>
+			<result column ="BTY_BEER_TYPE_NAME" property = "beerTypeName"/>
+		</association>
+		<association property="beerTasteVO" javaType="BeerTasteVO">
+			<result column ="BTS_BEER_TASTE_ID" property = "beerTasteId"/>
+			<result column ="BTS_BEER_TASTE_ID" property = "beerTasteName"/>
+		</association>		
+	</resultMap>
+
+
 	<select id="selectDuplicateEmail" parameterType="string" resultType ="_int">
 		SELECT	COUNT(USER_ID)
 		FROM	BAR_USER
@@ -32,6 +75,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, #{sex}
 		)
 	</insert>
+	
+	<insert id="insertUserFavTaste" parameterType="UserFavTasteVO">
+		INSERT INTO FAV_TASTE (
+		USER_ID
+		, BEER_TASTE_ID
+		)
+		VALUES (
+		USER_ID_SEQ.CURRVAL
+		, #{favTasteId}
+		)
+	</insert>
+	
+	<insert id="insertUserFavType" parameterType="UserFavTypeVO">
+		INSERT INTO FAV_TYPE (
+		USER_ID
+		, BEER_TYPE_ID
+		)
+		VALUES (
+		USER_ID_SEQ.CURRVAL
+		, #{favTypeId}
+		)
+	</insert>
 	<select id="selectUser" parameterType="UserVO" resultType="UserVO">
 		SELECT	USER_ID id
 				, USER_EMAIL email
@@ -46,6 +111,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT	NVL(SALT,'')
 		FROM	BAR_USER
 		WHERE	USER_EMAIL = #{email}
+	</select>
+	
+	<select id="selectUserFavTaste" parameterType="_int" resultMap="UserVOMap">
+		SELECT	U.USER_NAME
+				, BTS.BEER_TASTE_NAME
+		FROM	BAR_USER U
+				, BEER_TASTE BTS
+				, FAV_TASTE FTS
+		WHERE	U.USER_ID = FTS.USER_ID
+		AND		BTS.BEER_TASTE_ID = FTS.BEER_TASTE_ID
+		AND		U.USER_ID = #{id} 
+	</select>
+	
+	<select id="selectUserFavType" parameterType="_int" resultMap="UserVOMap">
+		SELECT	U.USER_NAME
+				, BTY.BEER_TYPE_NAME
+		FROM	BAR_USER U
+				, BEER_TYPE BTY
+				, FAV_TYPE FTY
+		WHERE	U.USER_ID = FTY.USER_ID
+		AND		BTY.BEER_TYPE_ID = FTY.BEER_TYPE_ID
+		AND		U.USER_ID = #{id} 
 	</select>
 	
 </mapper>

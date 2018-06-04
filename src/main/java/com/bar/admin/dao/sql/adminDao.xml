@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminDAO">
+	<insert id="insertBeerDesc" parameterType ="BeerVO">
+		INSERT	INTO BEER_DESC (
+			BEER_ID
+			,BEER_NAME_KOR
+			,BEER_NAME_ENG
+			,BEER_VOLUME
+			,BEER_TYPE_ID
+			,BEER_TYPE_NAME
+			,BEER_TYPE_FULLNAME
+			,BEER_TASTE_ID
+			,BEER_COUNTRY
+			,BEER_TEMP
+			,BEER_IMG
+			,BEER_LIKE
+			
+		)
+		VALUES	(
+			BEER_ID_SEQ.NEXTVAL
+			,#{beerNameKor}
+			,#{beerNameEng}
+			,#{beerVolume}
+			,#{beerTypeId}
+			,#{beerTypeName}
+			,#{beerTypeFullname}
+			,#{beerTasteId}
+			,#{beerCountry}
+			,#{beerTemp}
+			,#{beerImg}
+			,0
+		)
+		
+	</insert>
+	
+	
+	<insert id="insertFesta" parameterType ="FestaVO">
+		INSERT	INTO FESTA (
+			FESTA_ID
+			,FESTA_NAME
+			,FESTA_DATE
+			,FESTA_PLACE
+			,FESTA_DESC
+			,FESTA_IMG
+			,FESTA_LINK
+		)
+		VALUES (
+			FESTA_ID_SEQ.NEXTVAL
+			, #{festaName}
+			, #{festaDate}
+			, #{festaPlace}
+			, #{festaDesc}
+			, #{festaImg}	
+			, #{festaLink}	
+		)
+	</insert>
+</mapper>

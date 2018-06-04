@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bar.beer.service.BeerEvalService;
 import com.bar.beer.service.BeerService;
-import com.bar.beer.vo.BeerEvalVO;
 import com.bar.beer.vo.BeerPageVO;
 import com.bar.beer.vo.BeerVO;
 
@@ -54,8 +53,29 @@ public class BeerController {
 		ModelAndView view = new ModelAndView();
 		view.setViewName("bar/beer/wehave");
 		
+		
 		PageExplorer pageExplorer = beerService.getAll(beerPageVO);
 		view.addObject("pageExplorer",pageExplorer);
+		return view;
+	}
+	
+	@RequestMapping("/wehave/taste/{beerTasteId}")
+	public ModelAndView viewTastePage(@PathVariable int beerTasteId,BeerVO beerVO, HttpSession session) {	
+		ModelAndView view = new ModelAndView();
+		view.setViewName("bar/beer/wehave");
+		List<BeerVO> beerTaste = beerService.getTaste(beerVO.getBeerTasteId());
+		System.out.println(beerTaste.get(0).getBeerImg());
+		view.addObject("beerTaste",beerTaste);
+		return view;
+	}
+	
+	@RequestMapping("/wehave/type/{beerTypeId}")
+	public ModelAndView viewTypePage(@PathVariable int beerTypeId, BeerVO beerVO, HttpSession session) {
+			
+		ModelAndView view = new ModelAndView();
+		view.setViewName("bar/beer/wehave");
+		List<BeerVO> beerType = beerService.getType(beerVO.getBeerTypeId());
+		view.addObject("beerType",beerType);
 		return view;
 	}
 	
@@ -63,11 +83,21 @@ public class BeerController {
 	public ModelAndView viewBeerDescPage(@PathVariable int beerId, HttpSession session) {
 		ModelAndView view = new ModelAndView();
 		view.setViewName("bar/beer/beerDesc");
-		List<BeerEvalVO> beerEval = beerEvalService.readAllEvals(beerId);
+		//List<BeerEvalVO> beerEval = beerEvalService.readAllEvals(beerId);
 		
 		BeerVO beerOne = beerService.getOne(beerId);
 		view.addObject("desc", beerOne);
-		view.addObject("beerEval", beerEval);
+		//System.out.println(beerOne.getBeerTasteVO().getBeerTasteName());
+		//view.addObject("beerEval", beerEval);
 		return view;
+	}
+	
+	@RequestMapping("/chooseLike/{beerId}")
+	public String doChooseLike(@PathVariable int beerId) {
+		boolean isSuccess = beerService.chooseLikeBeer(beerId);
+		if(isSuccess) {
+			return "redirect:/beer/desc/" + beerId;
+		}
+		return null;
 	}
 }

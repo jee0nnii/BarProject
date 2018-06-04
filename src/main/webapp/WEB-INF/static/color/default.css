@@ -1,14 +1,16 @@
-a, a:hover {
-  color: #00c1c1;
+a {
+  color: #333;
 }
-
+a:hover {
+  color: black;
+  font-weight:bold;
+}
 
 /* Back to top button */
 .back-to-top {
   background: #FE7A66;
   color: #fff;
 }
-
 
 .back-to-top:focus {
   background: #00c1c1;

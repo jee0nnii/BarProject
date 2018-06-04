@@ -7,23 +7,48 @@ public class BeerVO {
 	private int beerId;
 	private String beerNameKor;
 	private String beerNameEng;
-	private String beerCountry;
-	private String beerType;
-	private String beerTaste;
+	private String beerCountry; 
+	
+	private String beerTypeFullname;
+	
 	private String beerVolume;
 	private String beerTemp;
-	private String beerLike;
-	private String beerHate;
+	private int beerLike;
 	private String beerImg;
 
-	private UserVO userVO;
-	public UserVO getUserVO() {
-		return userVO;
+	
+	private BeerTypeVO beerTypeVO;
+	private int beerTypeId;  
+	private String beerTypeName;
+	
+	public String getBeerTypeName() {
+		return beerTypeName;
 	}
 
-	public void setUserVO(UserVO userVO) {
-		this.userVO = userVO;
+	public void setBeerTypeName(String beerTypeName) {
+		this.beerTypeName = beerTypeName;
 	}
+
+	private BeerTasteVO beerTasteVO;
+	private int beerTasteId;
+	
+	public BeerTypeVO getBeerTypeVO() {
+		return beerTypeVO;
+	}
+
+	public void setBeerTypeVO(BeerTypeVO beerTypeVO) {
+		this.beerTypeVO = beerTypeVO;
+	}
+
+	public BeerTasteVO getBeerTasteVO() {
+		return beerTasteVO;
+	}
+
+	public void setBeerTasteVO(BeerTasteVO beerTasteVO) {
+		this.beerTasteVO = beerTasteVO;
+	}
+
+	private UserVO userVO;
 
 	public int getBeerId() {
 		return beerId;
@@ -57,20 +82,13 @@ public class BeerVO {
 		this.beerCountry = beerCountry;
 	}
 
-	public String getBeerType() {
-		return beerType;
+
+	public String getBeerTypeFullname() {
+		return beerTypeFullname;
 	}
 
-	public void setBeerType(String beerType) {
-		this.beerType = beerType;
-	}
-
-	public String getBeerTaste() {
-		return beerTaste;
-	}
-
-	public void setBeerTaste(String beerTaste) {
-		this.beerTaste = beerTaste;
+	public void setBeerTypeFullname(String beerTypeFullname) {
+		this.beerTypeFullname = beerTypeFullname;
 	}
 
 	public String getBeerVolume() {
@@ -89,20 +107,12 @@ public class BeerVO {
 		this.beerTemp = beerTemp;
 	}
 
-	public String getBeerLike() {
+	public int getBeerLike() {
 		return beerLike;
 	}
 
-	public void setBeerLike(String beerLike) {
+	public void setBeerLike(int beerLike) {
 		this.beerLike = beerLike;
-	}
-
-	public String getBeerHate() {
-		return beerHate;
-	}
-
-	public void setBeerHate(String beerHate) {
-		this.beerHate = beerHate;
 	}
 
 	public String getBeerImg() {
@@ -113,4 +123,30 @@ public class BeerVO {
 		this.beerImg = beerImg;
 	}
 
+	public UserVO getUserVO() {
+		return userVO;
+	}
+
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
+
+	public int getBeerTypeId() {
+		return beerTypeId;
+	}
+
+	public void setBeerTypeId(int beerTypeId) {
+		this.beerTypeId = beerTypeId;
+	}
+
+	public int getBeerTasteId() {
+		return beerTasteId;
+	}
+
+	public void setBeerTasteId(int beerTasteId) {
+		this.beerTasteId = beerTasteId;
+	}
+	
+	
+	
 }

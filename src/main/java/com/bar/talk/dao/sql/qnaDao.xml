@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="QnaDAO">
+<resultMap type = "QnaVO" id ="QnaVOMap">
+	<id column ="QNA_ID" property ="qnaId"/>
+	<result column ="QNA_TYPE" property ="qnaType"/>
+	<result column ="QNA_TITLE" property ="qnaTitle"/>
+	<result column ="QNA_REGIST_DATE" property ="qnaRegistDate"/>
+	<result column ="QNA_CONTENTS" property ="qnaContents"/>
+	<result column ="Q_USER_ID" property ="id"/>
+	
+	<association property="userVO" javaType="UserVO">
+		<id column = "U_USER_ID" property = "id"/>
+		<result column = "USER_NICKNAME" property = "nickname"/>
+		<result column = "USER_EMAIL" property = "email"/>
+	</association>
+</resultMap>
+	<insert id ="insertQna" parameterType ="QnaVO">
+		INSERT	INTO QNA (
+			QNA_ID
+			, QNA_TYPE
+			, QNA_REGIST_DATE
+			, QNA_TITLE
+			, QNA_CONTENTS
+			, USER_ID
+		)
+		VALUES	(
+			QNA_ID_SEQ.NEXTVAL
+			, #{qnaType}
+			, SYSDATE
+			, #{qnaTitle}
+			, #{qnaContents}
+			, #{id}
+		)
+	</insert>
+	<select id = "selectAll" parameterType ="QnaVO" resultMap = "QnaVOMap">
+		SELECT	Q.QNA_ID
+				, Q.QNA_TYPE
+				, TO_CHAR(Q.QNA_REGIST_DATE, 'YYYY-MM-DD HH24:MI') QNA_REGIST_DATE
+				, Q.QNA_TITLE
+				, Q.QNA_CONTENTS
+				, Q.USER_ID Q_USER_ID
+				, U.USER_ID U_USER_ID 
+				, U.USER_NICKNAME 
+		FROM	QNA Q
+				, BAR_USER U
+		WHERE	Q.USER_ID = U.USER_ID
+		ORDER	BY Q.QNA_ID DESC
+	</select>
+	
+	<select id = "selectOne" parameterType ="_int" resultMap = "QnaVOMap">
+		SELECT	Q.QNA_ID
+				, Q.QNA_TYPE
+				, TO_CHAR(Q.QNA_REGIST_DATE, 'YYYY-MM-DD HH24:MI') QNA_REGIST_DATE
+				, Q.QNA_TITLE
+				, Q.QNA_CONTENTS
+				, Q.USER_ID Q_USER_ID
+				, U.USER_ID U_USER_ID 
+				, U.USER_NICKNAME 
+		FROM	QNA Q
+				, BAR_USER U
+		WHERE	Q.USER_ID = U.USER_ID
+		AND		Q.QNA_ID = #{qnaId}
+	</select>
+	<delete id ="deleteQna" parameterType = "_int">
+		DELETE
+		FROM	QNA
+		WHERE	QNA_ID = #{qnaId}
+	</delete>
+	<update id ="updateQna" parameterType = "QnaVO">
+		UPDATE	QNA
+		SET		QNA_REGIST_DATE = SYSDATE
+				<if test="qnaTitle != null and qnaTitle != ''">
+				, QNA_TITLE = #{qnaTitle}
+				</if>
+				<if test="qnaType != null and qnaType != ''">
+				, QNA_TYPE = #{qnaType}
+				</if>
+				<if test="qnaContents != null and qnaContents !=''">
+				, QNA_CONTENTS =#{qnaContents}
+				</if>
+		WHERE	QNA_ID = #{qnaId}
+		AND		USER_ID = #{id}
+		
+	</update>
+	
+	
+	</mapper>

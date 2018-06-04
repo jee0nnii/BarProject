@@ -12,6 +12,23 @@ public class BeerPageVO {
 	@EndRow
 	private int endNumber;
 	
+	//searchType : 맥주이름 가지고만 할 거 같은데
+	private int searchType;
+	private String searchKeyword;
+	
+	public int getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(int searchType) {
+		this.searchType = searchType;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	
 	public int getPageNo() {
 		return pageNo;
 	}

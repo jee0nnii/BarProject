@@ -16,7 +16,7 @@ public class BeerDaoImplForOracle extends SqlSessionDaoSupport implements BeerDA
 	
 	//페이징처리 부분
 	@Override
-	public List<BeerVO> selecAll(BeerPageVO beerPageVO) {
+	public List<BeerVO> selectAll(BeerPageVO beerPageVO) {
 		return getSqlSession().selectList("BeerDAO.selectAll",beerPageVO);
 	}
 
@@ -30,8 +30,19 @@ public class BeerDaoImplForOracle extends SqlSessionDaoSupport implements BeerDA
 		return getSqlSession().selectOne("BeerDAO.selectOne", beerId);
 	}
 
+	@Override
+	public int incrementBeerLike(int beerId) {
+		return getSqlSession().update("BeerDAO.incrementBeerLike", beerId);
+	}
 
-	
+	@Override
+	public List<BeerVO> selectFromTaste(int beerTasteId) {
+		return getSqlSession().selectList("BeerDAO.selectFromTaste", beerTasteId);
+	}
 
+	@Override
+	public List<BeerVO> selectFromType(int beerTypeId) {
+		return getSqlSession().selectList("BeerDAO.selectFromType", beerTypeId);
+	}
 	
 }

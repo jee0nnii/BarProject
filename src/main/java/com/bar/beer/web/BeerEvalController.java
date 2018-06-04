@@ -41,6 +41,7 @@ public class BeerEvalController {
 	@RequestMapping(value = "/api/evalRead/{beerId}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<BeerEvalVO> getAllEval(@PathVariable int beerId){
+		System.out.println("beerId::"+beerId);
 		return beerEvalService.readAllEvals(beerId);
 	}
 	
@@ -52,6 +53,7 @@ public class BeerEvalController {
 		
 		UserVO user = (UserVO) session.getAttribute(User.USER);
 		beerEvalVO.setId(user.getId());
+		beerEvalVO.setEmail(user.getEmail());
 		beerEvalVO.setBeerId(beerId);
 		
 		boolean isSuccess = beerEvalService.createEval(beerEvalVO);

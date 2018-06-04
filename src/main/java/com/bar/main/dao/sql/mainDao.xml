@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MainDAO">
+	<resultMap type="FestaVO" id="FestaVOMap">
+			<id column = "FESTA_ID" property="festaId"/>
+			<result column = "FESTA_NAME" property="festaName"/>
+			<result column = "FESTA_DATE" property="festaDate"/>
+			<result column = "FESTA_PLACE" property="festaPlace"/>
+			<result column = "FESTA_DESC" property="festaDesc"/>
+			<result column = "FESTA_IMG" property="festaImg"/>
+			<result column = "FESTA_LINK" property="festaLink"/>
+	</resultMap>
+	
+	<select id="selectFestaAll" resultType = "FestaVO">
+		SELECT	FESTA_ID festaId
+				,FESTA_NAME festaName
+				,FESTA_DATE festaDate
+				,FESTA_PLACE festaPlace
+				,FESTA_DESC festaDesc
+				,FESTA_IMG festaImg
+				,FESTA_LINK festaLink
+		FROM	FESTA
+	
+	</select>
+<!-- 	<select id="selectFestaOne" resultType = "FestaVO">
+		SELECT	FESTA_ID festaId
+				,FESTA_NAME festaName
+				,FESTA_DATE festaDate
+				,FESTA_PLACE festaPlace
+				,FESTA_DESC festaDesc
+				,FESTA_IMG festaImg
+				,FESTA_LINK festaLink
+		FROM	FESTA
+		WHERE	FESTA_ID = #{festaId}
+	
+	</select> -->
+</mapper>

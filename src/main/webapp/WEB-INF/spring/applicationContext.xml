@@ -12,8 +12,9 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
 			<mvc:exclude-mapping path="/login"/>
-<!-- 			<mvc:exclude-mapping path="/main"/> -->
+			<mvc:exclude-mapping path="/main"/>
 			<mvc:exclude-mapping path="/join"/>
+			<mvc:exclude-mapping path="/wehave"/>
 			<mvc:exclude-mapping path="/static/**"/>
 			<mvc:exclude-mapping path="/api/duplicate/**" />
 			<bean id ="sessionInterceptor" class ="com.bar.interceptors.SessionInterceptor"/>

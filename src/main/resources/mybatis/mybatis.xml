@@ -5,14 +5,25 @@
 <configuration>
 	<!-- 패키지 통합관리 -->
 	<typeAliases>
-		<typeAlias type="com.bar.user.vo.UserVO" alias="UserVO"/> 
-		<typeAlias type="com.bar.beer.vo.BeerVO" alias="BeerVO"/>  
+		<typeAlias type="com.bar.user.vo.UserVO" alias="UserVO"/>
+		<typeAlias type="com.bar.user.vo.UserFavTasteVO" alias="UserFavTasteVO"/>
+		<typeAlias type="com.bar.user.vo.UserFavTypeVO" alias="UserFavTypeVO"/> 
+		<typeAlias type="com.bar.beer.vo.BeerVO" alias="BeerVO"/>
+		<typeAlias type="com.bar.beer.vo.BeerTypeVO" alias="BeerTypeVO"/>
+		<typeAlias type="com.bar.beer.vo.BeerTasteVO" alias="BeerTasteVO"/>
+		<typeAlias type="com.bar.admin.vo.AdminVO" alias="AdminVO"/>  
+		<typeAlias type="com.bar.admin.vo.FestaVO" alias="FestaVO"/>
+		<typeAlias type="com.bar.main.vo.MainVO" alias="MainVO"/> 
+		<typeAlias type="com.bar.talk.vo.QnaVO" alias="QnaVO"/>  
 		<typeAlias type="com.bar.beer.vo.BeerPageVO" alias="BeerPageVO"/> 
-		<typeAlias type="com.bar.beer.vo.BeerEvalVO" alias="BeerEvalVO"/>
+		<typeAlias type="com.bar.beer.vo.BeerEvalVO" alias="BeerEvalVO"/> 
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/bar/user/dao/sql/userDao.xml"/>
+		<mapper resource="com/bar/main/dao/sql/mainDao.xml"/>
+		<mapper resource="com/bar/talk/dao/sql/qnaDao.xml"/>
 		<mapper resource="com/bar/beer/dao/sql/beerDao.xml"/>
 		<mapper resource="com/bar/beer/dao/sql/beerEvalDao.xml"/>
+		<mapper resource="com/bar/admin/dao/sql/adminDao.xml"/>
 	</mappers>
 </configuration>

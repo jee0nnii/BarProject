@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bar.beer.vo.BeerTasteVO;
 import com.bar.user.constants.User;
 import com.bar.user.service.UserService;
+import com.bar.user.vo.UserFavTasteVO;
 import com.bar.user.vo.UserVO;
 
 @Controller
@@ -32,17 +34,16 @@ public class UserController {
 	public String viewDropDownPage() {
 		return "bar/beer/dropdown";
 	}
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String viewTestPage() {
-		return "bar/test";
-	}
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String viewMainPage() {
-		return "bar/main";
-	}
+	
+	
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String viewMyPage() {
-		return "user/mypage";
+	public ModelAndView viewMyPage(HttpSession session, UserFavTasteVO userFavTasteVO, BeerTasteVO beerTasteVO) {
+		ModelAndView view = new ModelAndView();
+		view.setViewName("user/mypage");
+		UserVO user = (UserVO) session.getAttribute(User.USER);
+		
+		view.addObject("user",user);
+		return view;
 	}
 
 	//회원가입 + 0405 생년월일

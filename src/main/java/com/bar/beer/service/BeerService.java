@@ -1,5 +1,7 @@
 package com.bar.beer.service;
 
+import java.util.List;
+
 import com.bar.beer.vo.BeerPageVO;
 import com.bar.beer.vo.BeerVO;
 
@@ -12,4 +14,10 @@ public interface BeerService {
 	public PageExplorer getAll(BeerPageVO beerPageVO);
 	
 	public BeerVO getOne(int beerId);
+	//좋아요
+	public boolean chooseLikeBeer(int beerId);
+	
+	public List<BeerVO> getTaste(int beerTasteId);
+	public List<BeerVO> getType(int beerTypeId);
+	
 }

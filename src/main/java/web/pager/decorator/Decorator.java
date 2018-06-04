@@ -23,7 +23,7 @@ public class Decorator {
 	}
 
 	public String makeHighlightNowPageNumber(String pageNumber) {
-		return "<b>" + pageNumber + "</b>";
+		return "<b class = 'pagebtn'>" + pageNumber + "</b>";
 	}
 
 	public String makePrevGroup(int prevGroupPageNumber, String prevButtonName) {

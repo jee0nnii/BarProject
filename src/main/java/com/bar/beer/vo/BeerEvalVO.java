@@ -9,11 +9,26 @@ public class BeerEvalVO {
 	private int beerEvalPoint;
 	private String beerEvalTalk;
 	private int id; //사용자 ID
+	private String email;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String string) {
+		this.email = string;
+	}
 	private int beerId;
 	private String evalRegistDate;
 	
 	private UserVO userVO;
 	private BeerVO beerVO;
+	
+	private BeerTasteVO beerTasteVO;	
+	public BeerTasteVO getBeerTasteVO() {
+		return beerTasteVO;
+	}
+	public void setBeerTasteVO(BeerTasteVO beerTasteVO) {
+		this.beerTasteVO = beerTasteVO;
+	}
 	
 	public int getBeerEvalId() {
 		return beerEvalId;
